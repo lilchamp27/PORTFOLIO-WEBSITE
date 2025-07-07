@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { FiMenu, FiX, FiMoon, FiSun } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { ThemeContext } from '../context/ThemeContext';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(ThemeContext);
@@ -23,7 +24,7 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex justify-between items-center h-20">
-          
+
           {/* Logo / Name */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -31,26 +32,29 @@ const Navbar = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex-shrink-0"
           >
-            <a href="/" className="text-xl font-light text-black dark:text-white">
+            <Link to="/" className="text-xl font-light text-black dark:text-white">
               Oduneye
               <span className="text-orange-600 dark:text-orange-400 font-normal ml-1">B.</span>
-            </a>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link, index) => (
-              <motion.a
+              <motion.div
                 key={link.name}
-                href={link.path}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                className="relative text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-300 group"
               >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-px bg-orange-600 dark:bg-orange-400 group-hover:w-full transition-all duration-300"></span>
-              </motion.a>
+                <Link
+                  to={link.path}
+                  className="relative text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-300 group"
+                >
+                  {link.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-orange-600 dark:bg-orange-400 group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </motion.div>
             ))}
 
             {/* Dark Mode Toggle */}
@@ -111,35 +115,38 @@ const Navbar = () => {
       >
         <div className="px-6 py-6 space-y-6">
           {navLinks.map((link, index) => (
-            <motion.a
+            <motion.div
               key={link.name}
-              href={link.path}
               initial={{ opacity: 0, x: -20 }}
-              animate={{ 
-                opacity: isMenuOpen ? 1 : 0, 
-                x: isMenuOpen ? 0 : -20 
+              animate={{
+                opacity: isMenuOpen ? 1 : 0,
+                x: isMenuOpen ? 0 : -20,
               }}
-              transition={{ 
-                duration: 0.3, 
-                delay: isMenuOpen ? index * 0.1 : 0 
+              transition={{
+                duration: 0.3,
+                delay: isMenuOpen ? index * 0.1 : 0,
               }}
-              className="block text-lg font-light text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)}
             >
-              {link.name}
-            </motion.a>
+              <Link
+                to={link.path}
+                className="block text-lg font-light text-gray-700 dark:text-gray-200 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            </motion.div>
           ))}
-          
+
           {/* Mobile Dark Mode Toggle */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ 
-              opacity: isMenuOpen ? 1 : 0, 
-              y: isMenuOpen ? 0 : 20 
+            animate={{
+              opacity: isMenuOpen ? 1 : 0,
+              y: isMenuOpen ? 0 : 20,
             }}
-            transition={{ 
-              duration: 0.3, 
-              delay: isMenuOpen ? navLinks.length * 0.1 : 0 
+            transition={{
+              duration: 0.3,
+              delay: isMenuOpen ? navLinks.length * 0.1 : 0,
             }}
             className="pt-6 border-t border-orange-100 dark:border-orange-900/30"
           >
