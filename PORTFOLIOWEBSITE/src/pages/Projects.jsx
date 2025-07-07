@@ -58,19 +58,22 @@ const Projects = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-black min-h-screen">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-black min-h-screen">
       <div className="max-w-6xl mx-auto">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl md:text-6xl font-light text-white mb-4" style={{ fontFamily: 'Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+          <h2 
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 leading-tight" 
+            style={{ fontFamily: 'Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
+          >
             PROJECTS
           </h2>
           <motion.div 
-            className="w-24 h-1 bg-orange-800 mx-auto"
+            className="w-16 sm:w-20 md:w-24 h-1 bg-orange-800 mx-auto"
             initial={{ width: 0 }}
             animate={{ width: 96 }}
             transition={{ duration: 0.8, delay: 0.3 }}
@@ -78,7 +81,7 @@ const Projects = () => {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -92,9 +95,9 @@ const Projects = () => {
               onMouseEnter={() => setHoveredProject(project.name)}
               onMouseLeave={() => setHoveredProject(null)}
             >
-              <div className="p-8">
+              <div className="p-4 sm:p-6 lg:p-8">
                 <motion.h3 
-                  className="text-2xl font-light text-white mb-3" 
+                  className="text-xl sm:text-2xl font-light text-white mb-2 sm:mb-3" 
                   style={{ fontFamily: 'Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -104,7 +107,7 @@ const Projects = () => {
                 </motion.h3>
                 
                 <motion.p 
-                  className="text-gray-400 mb-6 leading-relaxed"
+                  className="text-gray-400 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base"
                   style={{ fontFamily: 'Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -114,7 +117,7 @@ const Projects = () => {
                 </motion.p>
 
                 <motion.div 
-                  className="flex flex-wrap gap-2 mb-8"
+                  className="flex flex-wrap gap-2 mb-6 sm:mb-8"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.1 + 0.9 }}
@@ -122,7 +125,7 @@ const Projects = () => {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-gray-900 text-gray-300 text-sm font-light border border-gray-800"
+                      className="px-2 sm:px-3 py-1 bg-gray-900 text-gray-300 text-xs sm:text-sm font-light border border-gray-800"
                       style={{ fontFamily: 'Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
                     >
                       {tech}
@@ -131,7 +134,7 @@ const Projects = () => {
                 </motion.div>
 
                 <motion.div 
-                  className="flex gap-4"
+                  className="flex flex-col sm:flex-row gap-3 sm:gap-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.1 + 1.1 }}
@@ -140,7 +143,7 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-white text-black hover:bg-gray-200 transition-colors font-light"
+                    className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white text-black hover:bg-gray-200 transition-colors font-light text-sm sm:text-base"
                     style={{ fontFamily: 'Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -152,7 +155,7 @@ const Projects = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-orange-800 text-white hover:bg-orange-700 transition-colors font-light"
+                    className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-orange-800 text-white hover:bg-orange-700 transition-colors font-light text-sm sm:text-base"
                     style={{ fontFamily: 'Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
